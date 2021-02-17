@@ -18,8 +18,8 @@
 # List files in "R/"
 fnFunc <- list.files(path = "functions/", recursive=T, full.names = TRUE)
 # Source all functions
-for(fun in fnFunc){
-  source(fn_fnFunc[fun])
+for(i in 1:length(fnFunc)){
+  source(fnFunc[i])
 }
 
 # =========================================================================== #
