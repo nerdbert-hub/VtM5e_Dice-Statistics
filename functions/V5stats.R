@@ -1,51 +1,3 @@
-# # formulars 
-# P(X=r) = nCr * p^r * (1-p)^(n-r)
-# nCr = n! / ((n-r)! * r!)
-
-# functions in R
-nCr <- function(n,r) {
-  factorial(n) / ( factorial(r) * factorial(n-r))
-}
-
-diceProb <- function(n,r,p){
-  nCr(n,r) * p^r * (1-p)^(n-r)
-}
-
-minSuc <- function(p, n, r){
-  cProb <- 0
-  for(i in r:n){
-    cProb <- cProb + diceProb(n,i,p)
-  }
-  return(cProb)
-}
-
-
-# parameters
-p <- 0.5
-n <- 7
-r <- 2
-
-for(n in 1:10){
-  prob <- minSuc(p,n,r)
-  cat("Willpower*", n, "at Diff", r, "=", prob, "\n")
-}
-
-
-
-
-# Monte Carlo Simulation
-diff <- 2
-nMC <- 20000
-wins <- 0
-sux <- 0
-crit <- 0
-fail <- 0
-beast <- 0
-nHunger <- 3
-nDice <- 7
-
-# Monte Carlo Simulation
-
 V5stats <- function(nDice, nHunger, diff, nMC = 20000){
   # initiate 
   wins <- 0
@@ -105,6 +57,3 @@ V5stats <- function(nDice, nHunger, diff, nMC = 20000){
   )
   return(l)
 }
-
-V5stats(5,1,2, nMC = 1000000)
-
